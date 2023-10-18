@@ -27,7 +27,7 @@ nextButton.addEventListener("click", () => {
     answerContainer.classList.add("hide");
     nextButton.classList.remove("hide");
     nextButton.innerText = "Play again";
-    scoreEl.innerText = `Score: ${score}`;
+    scoreEl.innerText = `Score: ${score < 10 ? "0" + score : score}`;
   } else {
     nextButton.innerText = "Next";
     startGame();
@@ -103,7 +103,7 @@ function handleSubmit(answers, answerEl, hint) {
   }
 
   scoreEl.classList.remove("hide");
-  scoreEl.innerText = `Score: ${score}`;
+  scoreEl.innerText = `Score: ${score < 10 ? "0" + score : score}`;
 }
 
 function chosenAnswer(e, answerEl) {
