@@ -33,6 +33,7 @@ body {
   min-width: 500px;
   max-width: 500px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, .5);
+  min-height: 600px;
 }
 
 .score-container {
@@ -58,7 +59,7 @@ body {
 .answer-container {
   display: grid;
   gap: calc(var(--margin-b) / 2);
-  margin-bottom: var(--margin-b);
+  margin: var(--margin-b) 0;
 }
 
 .btn-container {
