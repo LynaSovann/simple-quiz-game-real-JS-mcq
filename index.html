@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Quiz Game</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="score-container">
+        <h1>Quiz game</h1>
+        <p id="score"></p>
+      </div>
+      <div class="intro-container" id="intro-container">
+        <h2>Welcome to our game!</h2>
+        <p>Click start button to start playing the game!</p>
+      </div>
+      <div class="question-container hide" id="question-container">
+        <h3 class="question" id="question">What is JavaScript?</h3>
+      </div>
+      <div class="answer-container hide" id="answer-container">
+        <button class="btn ans" disabled>dog</button>
+        <button class="btn ans">cat</button>
+        <button class="btn ans">orange</button>
+        <button class="btn ans">mango</button>
+      </div>
+      <div class="hint-container hide" id="hint-container">
+        <p id="hint"></p>
+      </div>
+      <div class="btn-container">
+        <button class="btn" id="start">Start</button>
+        <button class="btn hide" id="next">Next</button>
+        <button class="btn hide" id="submit">Submit</button>
+      </div>
+    </div>
+  </body>
+</html>
