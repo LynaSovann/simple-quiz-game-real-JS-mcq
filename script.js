@@ -6,6 +6,7 @@ const questionContainer = document.getElementById("question-container");
 const answerContainer = document.getElementById("answer-container");
 const hintContainer = document.getElementById("hint-container");
 const scoreEl = document.getElementById("score");
+const bodyEl = document.body;
 let questionIndex = 0,
   score = 0;
 
@@ -21,14 +22,31 @@ nextButton.addEventListener("click", () => {
   hintContainer.classList.add("hide");
   nextButton.classList.add("hide");
   if (questionIndex >= questions.length) {
-    questionIndex = -1;
-    score = 0;
+    document.getElementById(
+      "start-end"
+    ).innerText = `Your total score is ${score} out of ${questions.length}.`;
+    document.getElementById("description").innerText =
+      "Do you really enjoy my game? Click play again button to re play the game.";
+    introContainer.classList.remove("hide");
+
+    bodyEl.classList.remove("playing");
+    bodyEl.classList.remove("wrong-ans");
+    bodyEl.classList.remove("correct-ans");
+
     questionContainer.classList.add("hide");
     answerContainer.classList.add("hide");
     nextButton.classList.remove("hide");
     nextButton.innerText = "Play again";
     scoreEl.innerText = `Score: ${score < 10 ? "0" + score : score}`;
+
+    questionIndex = -1;
+    score = 0;
   } else {
+    bodyEl.classList.add("playing");
+    bodyEl.classList.remove("wrong-ans");
+    bodyEl.classList.remove("correct-ans");
+
+    bodyEl.classList.remove("start");
     nextButton.innerText = "Next";
     startGame();
   }
@@ -41,9 +59,11 @@ function resetState(element) {
 }
 
 function startGame() {
+  scoreEl.innerText = `Score: ${score < 10 ? "0" + score : score}`;
   resetState(answerContainer);
   const element = questions[questionIndex];
   startGameController();
+  bodyEl.classList.add("playing");
 
   const questionEl = document.getElementById("question");
   questionEl.innerText = element.question;
@@ -96,10 +116,14 @@ function handleSubmit(answers, answerEl, hint) {
   if (chosenEl.innerText === correctAns) {
     chosenEl.classList.remove("chosen-wrong");
     chosenEl.classList.add("chosen-correct");
+    bodyEl.classList.add("correct-ans");
+    bodyEl.classList.remove("wrong-ans");
     score++;
   } else {
     chosenEl.classList.add("chosen-wrong");
     chosenEl.classList.remove("chosen-correct");
+    bodyEl.classList.remove("correct-ans");
+    bodyEl.classList.add("wrong-ans");
   }
 
   scoreEl.classList.remove("hide");

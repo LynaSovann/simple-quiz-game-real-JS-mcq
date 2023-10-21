@@ -11,19 +11,42 @@
   --margin-b: 2rem;
   --raduis-size: 4px;
   --primary-color: #123456;
+  --image-start-game: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("./imgs/start-game.svg");
+  --image-play-game: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./imgs/playing-game.svg");
+  --image-correct: linear-gradient(rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0.5)),
+    url("./imgs/correct.svg");
+  --image-wrong: linear-gradient(rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.5)),
+    url("./imgs/wrong.svg");
 }
 
 body {
+  --image: var(--image-start-game);
   display: flex;
   height: 100vh;
   width: 100vw;
   align-items: center;
   justify-content: center;
   color: white;
-  background: url("./imgs/start-game.svg") no-repeat;
+  background: var(--image);
   background-position: center;
-  /* background-size: cover; */
   object-fit: cover;
+}
+
+.playing {
+  --image: var(--image-play-game);
+}
+
+.wrong-ans {
+  --image: var(--image-wrong);
+}
+
+.correct-ans {
+  --image: var(--image-correct);
 }
 
 .container {
@@ -32,7 +55,7 @@ body {
   border-radius: var(--raduis-size);
   min-width: 500px;
   max-width: 500px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, .5);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
   min-height: 600px;
 }
 
@@ -63,7 +86,6 @@ body {
 }
 
 .btn-container {
-
 }
 
 .btn {
@@ -71,11 +93,11 @@ body {
   font-weight: bold;
   padding: calc(var(--margin-b) / 4);
   cursor: pointer;
-  border:  2px solid var(--primary-color);
+  border: 2px solid var(--primary-color);
   outline: none;
   border-radius: var(--raduis-size);
   color: var(--primary-color);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s;
 }
 
@@ -83,7 +105,6 @@ body {
   background: transparent;
   color: white;
   border-color: white;
-
 }
 
 .btn:active:not([disabled]) {
@@ -125,5 +146,5 @@ body {
 }
 
 .hint-container {
-  margin-bottom: calc(var(--margin-b)/4);
+  margin-bottom: calc(var(--margin-b) / 4);
 }
